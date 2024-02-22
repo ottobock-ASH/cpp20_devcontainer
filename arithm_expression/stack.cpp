@@ -1,31 +1,30 @@
 #include "stack.hpp"
+#include <iostream>
 
-bool Stack::isFull() {
-    return (_top >= _max -1);
-}
+using namespace std;
 
-Stack::Stack(int size) {
-    _pData = new int [size];
-    _max = size;
-    _top = -1;
+Stack::Stack(const Stack& s) {
+    cout << "Copy Constructor" << endl;
 }
 
 Stack::~Stack() {
-    if(_pData != nullptr) {
-        delete[] _pData;
-    }
+    cout << "Destructor" << endl;
 }
 
+Stack& Stack::operator=(const Stack& s) {
+    cout << "Assignment operator" << endl;
+    return *this;
+}
 
 void Stack::push(int value) {
-    _pData[++_top] = value;
+    _values[++_sp] = value;
 }
 
 int Stack::pop() {
-    return _pData[_top--];
+    return _values[_sp--];
 }
     
     
 bool Stack::isEmpty() const {
-    return 1;
+    return (_sp <= -1);
 }

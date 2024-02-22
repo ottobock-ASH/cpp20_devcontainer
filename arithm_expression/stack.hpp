@@ -2,18 +2,17 @@
 
 class Stack {
     private:
-        int* _pData;
-        int _max;
-        int _top;
-
-        bool isFull();
+        int _values[32];
+        int _sp;
 
     public:
-        Stack(int size=16);
+        Stack(const Stack& s);
+        Stack(int size=32);
         ~Stack();
-
+        
+        Stack& operator=(const Stack& s);
         void push(int value);
         int  pop();
-        
+
         bool isEmpty() const;
 };
